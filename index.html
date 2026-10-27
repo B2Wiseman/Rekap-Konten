@@ -57,7 +57,72 @@ function populateWeeks(){const m=$('#monthFilter').value,el=$('#weekFilter'),sel
 function updateStats(){const m=$('#monthFilter').value,list=contents.filter(c=>!m||c.month===m);$('#total').textContent=list.length;$('#completedCount').textContent=list.filter(c=>stage(c)==='complete').length;$('#submittedCount').textContent=list.filter(c=>stage(c)==='submitted').length;$('#revisedCount').textContent=list.filter(c=>stage(c)==='revised').length;$('#monthBadge').textContent='● '+(m?m.toUpperCase():'SEMUA BULAN')}
 function setSourceStatus(type,msg){$('#sourceStatus').className='source-status '+type;$('#sourceMessage').textContent=msg}
 function cellValue(cell){if(!cell)return '';return String(cell.f??cell.v??'').trim()}
-function parseGViz(text,month){const a=text.indexOf('{'),b=text.lastIndexOf('}');if(a<0||b<a)throw new Error('Format data Google Sheets tidak dikenali');const json=JSON.parse(text.slice(a,b+1));if(json.status==='error')throw new Error(json.errors?.[0]?.detailed_message||'Google Sheets error');let currentWeek='';const out=[];for(const row of json.table?.rows||[]){const cells=row.c||[],v=Array.from({length:9},(_,i)=>cellValue(cells[i]));if(v[0])currentWeek=v[0].replace(/m[iI]nggu/i,'Minggu');const [period,content,created,submitted,revision,uploaded,talent,caption,link]=v;if(!content)continue;out.push({month,week:currentWeek||period||'Periode belum diisi',content,created,submitted,revision,uploaded,talent,caption,link})}return out}
+function parseGViz(text, month) {
+  const a = text.indexOf('{');
+  const b = text.lastIndexOf('}');
+
+  if (a < 0 || b < a) {
+    throw new Error('Format data Google Sheets tidak dikenali');
+  }
+
+  const json = JSON.parse(text.slice(a, b + 1));
+
+  if (json.status === 'error') {
+    throw new Error(
+      json.errors?.[0]?.detailed_message || 'Google Sheets error'
+    );
+  }
+
+  let currentWeek = '';
+  const out = [];
+
+  for (const row of json.table?.rows || []) {
+    const cells = row.c || [];
+    const v = Array.from(
+      { length: 10 },
+      (_, i) => cellValue(cells[i])
+    );
+
+    // Lewati baris judul kolom jika terbaca sebagai data.
+    const header = v.map(x => x.toLowerCase().trim());
+
+    if (
+      header[0] === 'periode' &&
+      header[1] === 'konten'
+    ) {
+      continue;
+    }
+
+    if (v[0]) {
+      currentWeek = v[0].replace(/minggu/i, 'Minggu');
+    }
+
+    const [
+      period, content, created, submitted, revision,
+      uploaded, progress, talent, caption, link
+    ] = v;
+
+    if (!content || content.toLowerCase() === 'konten') {
+      continue;
+    }
+
+    out.push({
+      month,
+      week: currentWeek || period || 'Periode belum diisi',
+      content,
+      created,
+      submitted,
+      revision,
+      uploaded,
+      progress,
+      talent,
+      caption,
+      link
+    });
+  }
+
+  return out;
+}
 async function syncGoogleSheet(manual){const btn=$('#refreshData');if(manual){btn.disabled=true;btn.textContent='Memuat…'}setSourceStatus('','Mengambil data Google Sheets…');try{const results=await Promise.allSettled(SHEET_NAMES.map(async name=>{const res=await fetch(sheetUrl(name)+'&cache='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error(name+': HTTP '+res.status);return{name,rows:parseGViz(await res.text(),name)}}));const ok=results.filter(x=>x.status==='fulfilled'&&x.value.rows.length>0).map(x=>x.value);const failures=results.filter(x=>x.status==='rejected');if(!ok.length)throw new Error('Tidak ada tab bulanan yang terbaca. Periksa publikasi dan nama tab.');contents=ok.flatMap(x=>x.rows);populateMonths(ok.map(x=>x.name));populateWeeks();updateStats();render();$('#lastSync').textContent='Terakhir diperbarui '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});setSourceStatus('ok','Terhubung: '+ok.map(x=>x.name).join(', ')+' · '+contents.length+' konten'+(failures.length?' · '+failures.length+' tab belum tersedia':''))}catch(err){populateMonths([...new Set(contents.map(c=>c.month))]);populateWeeks();updateStats();render();setSourceStatus('error','Data cadangan ditampilkan. Periksa publikasi Google Sheets.');$('#lastSync').textContent=err.message||'Koneksi belum berhasil';console.warn(err)}finally{if(manual){btn.disabled=false;btn.textContent='↻ Sinkronkan'}}}
 function filtered(){const q=$('#search').value.trim().toLowerCase(),m=$('#monthFilter').value,w=$('#weekFilter').value,s=$('#statusFilter').value;return contents.map((c,i)=>({...c,_i:i})).filter(c=>{const hay=[c.month,c.week,c.content,c.created,c.submitted,c.revision,c.uploaded,c.talent,c.caption,c.link].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!m||c.month===m)&&(!w||c.week===w)&&(!s||stage(c)===s)})}
 function status(c){const s=stage(c);return `<span class="status ${s}">${stageLabel[s]}</span>`}
@@ -68,7 +133,5 @@ function closeModal(){$('#modalBackdrop').classList.remove('open');document.body
 async function copyText(text,button){try{await navigator.clipboard.writeText(text)}catch(e){const area=document.createElement('textarea');area.value=text;document.body.appendChild(area);area.select();document.execCommand('copy');area.remove()}const old=button.textContent;button.textContent='Tersalin ✓';setTimeout(()=>button.textContent=old,1300)}
 function exportCSV(){const cols=[['Bulan','month'],['Periode','week'],['Konten','content'],['Dibuat','created'],['Disetor','submitted'],['Revisi','revision'],['Diupload','uploaded'],['Talent','talent'],['Progress','stage'],['Caption','caption'],['Link','link']];const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const csv='\uFEFF'+[cols.map(c=>quote(c[0])).join(','),...filtered().map(c=>cols.map(col=>quote(col[1]==='stage'?stageLabel[stage(c)]:c[col[1]])).join(','))].join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rekap-konten-ev.csv';a.click();URL.revokeObjectURL(url)}
 init();
-  rows = rows.filter(row =>
-  String(row[0] ?? "").trim().toLowerCase() !== "periode"
-);
+
 </script></body></html>
