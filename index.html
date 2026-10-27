@@ -68,4 +68,7 @@ function closeModal(){$('#modalBackdrop').classList.remove('open');document.body
 async function copyText(text,button){try{await navigator.clipboard.writeText(text)}catch(e){const area=document.createElement('textarea');area.value=text;document.body.appendChild(area);area.select();document.execCommand('copy');area.remove()}const old=button.textContent;button.textContent='Tersalin ✓';setTimeout(()=>button.textContent=old,1300)}
 function exportCSV(){const cols=[['Bulan','month'],['Periode','week'],['Konten','content'],['Dibuat','created'],['Disetor','submitted'],['Revisi','revision'],['Diupload','uploaded'],['Talent','talent'],['Progress','stage'],['Caption','caption'],['Link','link']];const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const csv='\uFEFF'+[cols.map(c=>quote(c[0])).join(','),...filtered().map(c=>cols.map(col=>quote(col[1]==='stage'?stageLabel[stage(c)]:c[col[1]])).join(','))].join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rekap-konten-ev.csv';a.click();URL.revokeObjectURL(url)}
 init();
+  rows = rows.filter(row =>
+  String(row[0] ?? "").trim().toLowerCase() !== "periode"
+);
 </script></body></html>
