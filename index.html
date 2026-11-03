@@ -39,13 +39,14 @@ footer{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin
 <section class="table-wrap glass"><div class="table-scroll"><table><thead><tr><th>Bulan / Periode</th><th>Nama konten</th><th>Dibuat</th><th>Disetor</th><th>Revisi</th><th>Diupload</th><th>Talent</th><th>Progress</th></tr></thead><tbody id="tableBody"><tr><td colspan="8" class="empty">Memuat data…</td></tr></tbody></table></div></section>
 <section class="mobile-list" id="mobileList"></section><footer><span>Content Desk · Rekap konten</span><span>Update setiap 2 menit sekali</span></footer>
 </div>
-<div class="modal-backdrop" id="modalBackdrop"><section class="modal glass" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div class="eyebrow" id="modalWeek">DETAIL KONTEN</div><h3 id="modalTitle">Nama konten</h3><div id="modalStatus"></div></div><button class="close" id="closeModal" aria-label="Tutup">×</button></div><div class="detail-grid" id="detailGrid"></div><div class="copy-section"><div class="copy-head"><h4>Caption</h4><button class="btn small-btn" data-copy="caption">Salin caption</button></div><p id="captionText"></p></div><div class="copy-section"><div class="copy-head"><h4>Platform Upload</h4><button class="btn small-btn" data-copy="link">Salin kanal</button></div><p id="linkText"></p></div></section></div>
+<div class="modal-backdrop" id="modalBackdrop"><section class="modal glass" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-head"><div><div class="eyebrow" id="modalWeek">DETAIL KONTEN</div><h3 id="modalTitle">Nama konten</h3><div id="modalStatus"></div></div><button class="close" id="closeModal" aria-label="Tutup">×</button></div><div class="detail-grid" id="detailGrid"></div><div class="copy-section"><div class="copy-head"><h4>Caption</h4><button class="btn small-btn" data-copy="caption">Salin caption</button></div><p id="captionText"></p></div><div class="copy-section"><div class="copy-head"><h4>Platform Upload</h4><button class="btn small-btn" data-copy="link">Salin platform</button></div><p id="linkText"></p></div></section></div>
 <script>
 const fallbackContents = [{"week": "Minggu 3", "content": "Produk Tomida (Tomida Flash)", "created": "18 Oktober 2026", "submitted": "18 Oktober 2026", "revision": "19 Oktober 2026", "uploaded": "23 Oktober 2026 (09.45)", "talent": "Hanna", "caption": "Udah tahu motor listrik Tomida Flash belum? 👀⚡\n\nYuk, kenalan sama Tomida Flash! Siapa tahu ini jadi motor listrik yang selama ini kamu cari. 😉\n\n#EVMartOfficial #TOMIDA #TomidaFlash #MotorListrik #RamahLingkungan", "link": "Instagram evmartofficial\n\nTiktok evmart\n\nYouTube evmart\n\nShopee evmart_id\nShopee evmart_"}, {"week": "Minggu 3", "content": "Produk U-Winfly (Uwinfly T80C)", "created": "19 OKtober 2026", "submitted": "20 OKtober 2026", "revision": "-", "uploaded": "23 Oktober 2026 (16.18)", "talent": "Oliv", "caption": "Mau dilihat dari manapun, Uwinfly T80C tetep jadi pusat perhatian! 👀 ✨\nKalau udah begini, siapa yang nggak kepincut? 🤭\n\n#UwinflyT80C #SepedaListrik #SepedaListrikKeren #Uwinfly #EVMartOfficial", "link": "Instagram evmartofficial\nInstagram uwinfly.madiun\nInstagram uwinfly.magetan\n\nTikTok evmart\nTikTok Uwinfly Madiun\n\nYouTube evmart\n\nShopee evmart_\nShopee evmart_id"}, {"week": "Minggu 3", "content": "Produk Saige\n(Saige Nexo)", "created": "20 Oktober 2026", "submitted": "21 Oktober 2026", "revision": "-", "uploaded": "23 Oktober 2026 (18.40)", "talent": "Oliv", "caption": "Ini nih SAIGE NEXO! ⚡😎\n\nBukan cuma tampilannya yang menarik, fitur-fiturnya juga siap bikin aktivitas sehari-hari makin praktis dan nyaman. Yuk, intip fitur menarik dari SAIGE NEXO dan temukan alasan kenapa sepeda listrik ini layak jadi teman perjalananmu! ✨\n\n#SAIGE #SAIGENEXO #SepedaListrik #SepedaListrikKekinian #EVMartOfficial", "link": "Instagram evmartofficial\nInstagram saige.madiun\n\nTikTok evmart\n\nYouTube evmart\n\nShopee evmart_\nShopee evmart_id"}, {"week": "Minggu 3", "content": "Kendaraan Listrik Ber-STNK", "created": "22 Oktober 2026", "submitted": "23 Oktober 2026", "revision": "-", "uploaded": "-", "talent": "Oliv", "caption": "Gak cuma punya kendaraan yang kekinian, urusan surat-surat juga tetap aman. Ditambah lagi, pajaknya lebih murah dibanding motor konvensional. Hematnya dapet, praktisnya dapet, gaya juga tetep dapet! 🤩\n\nKalau bisa berkendara lebih hemat, kenapa harus pilih yang bikin pengeluaran makin berat? 😉\n\n#MotorListrik #U-WinflyMadiun #PajakMotor #EVMartOfficial #HematBareng", "link": ""}, {"week": "Minggu 3", "content": "Konten Receh (Saige)", "created": "22 Oktober 2026", "submitted": "23 Oktober 2026", "revision": "-", "uploaded": "24 Oktober 2026 (11.30)", "talent": "Oliv", "caption": "Masih yakin gak tertarik? 👀\n\nKece, nyaman buat nemenin aktivitas sehari-hari, dan bikin perjalanan makin menyenangkan!\nEiittss, tapi ini unit sepeda listrik SAIGE yaaa 🤭😊\n\n#SAIGE #EVMartOfficial #SepedaListrik #TemanPerjalanan #ElectricBike", "link": "Instagram evmartofficial\nInstagram saige.madiun\n\nTikTok evmart\n\nYouTube evmart\n\nShopee evmart_\nShopee evmart_id"}, {"week": "Minggu 3", "content": "Produk TailG", "created": "22 Oktober 2026", "submitted": "23 Oktober 2026", "revision": "-", "uploaded": "24 Oktober 2026 (17.00)", "talent": "Oliv", "caption": "Kalau kalian milih tipe yang mana nihh? 👀⚡\nSetiap tipe punya daya tariknya sendiri, tinggal pilih yang paling cocok sama gaya kalian!\n\n#TAILG #EVMartOfficial #SepedaListrik #MotorListrik #KendaraanListrik", "link": "Instagram evmartofficial\nInstagram TailG\n\nTikTok evmart\n\nYouTube evmart\n\nShopee evmart_\nShopee evmart_id"}, {"week": "Minggu 4", "content": "Konten Edukasi Petir (U-Winfly) (Happy)", "created": "-", "submitted": "-", "revision": "-", "uploaded": "26 Oktober 2026 (11.30)", "talent": "Oliv", "caption": "Gak usah takut sama petir gara-gara pakai sepeda listrik! ⚡🤭\nSepeda listrik sekarang sudah aman dalam segala kondisi, jadi ngga perlu khawatir lagi dehh 😉✨\n\n#SepedaListrik #ElectricBike #TipsBerkendara #GayaHidupPraktis #EVMartOfficial", "link": "Instagram evmartofficial collab uwinfly.madiun\n\nTikTok evmart\nTikTok uwinfly madiun\n\nYouTube evmart\n\nShopee evmart_\nShopee evmart_id"}, {"week": "Minggu 4", "content": "Konten Receh (Saige)", "created": "25 Oktober 2026", "submitted": "26 Oktober 2026", "revision": "-", "uploaded": "-", "talent": "Oliv", "caption": "Sekali lihat Saige Nexo, kok jadi pengen punya? 👀💚\nTampilannya bikin jatuh hati, dipakai sehari-hari makin happy! Siapa nih yang langsung kepincut?\n\n\n#SaigeNexo #EVmartOfficial #SaigeIndonesia #SepedaListrikKekinian #KendaraanListrik", "link": ""}, {"week": "Minggu 4", "content": "Produk U-Winfly (Uwinfly D66I)", "created": "25 Oktober 2026", "submitted": "26 Oktober 2026", "revision": "-", "uploaded": "-", "talent": "Oliv", "caption": "Ada yang menarik tanpa harus berlebihan. ✨\nUwinfly D66I hadir dengan tampilan yang stylish, bikin setiap perjalanan terasa lebih istimewa. Simple look, classy vibe. 😉\n\n#Uwinfly #UwinflyD66I #SepedaListrik #EVMartOfficial #UwinflyIndonesia", "link": ""}, {"week": "Minggu 4", "content": "Edukasi Remote Keyless (Saige)", "created": "26 Oktober 2026", "submitted": "27 Oktober 2026", "revision": "-", "uploaded": "-", "talent": "Oliv", "caption": "Eh, siapa bilang remote sepeda listrik cuma buat mengunci dan membuka kunci? 👀\nTernyata, bisa buat menyalakan unit juga, lho! Jadi, bisa berkendara tanpa perlu memasukkan kunci. Praktis banget, kan? 😎⚡\n\n\n#SepedaListrik #TipsSepedaListrik #FiturRemote #Keyless #EVMartOfficial", "link": ""}];
 let contents = fallbackContents.map(c=>({...c,month:'Oktober'}));
 const SHEET_ID='1OZwHlCXGZMXuZQikpUXMsdDJrCBrQjRpGrwYPAIK5Pk';
 // Nama tab harus sama persis dengan tab pada Google Sheets. Tambahkan bulan baru di sini.
 const SHEET_NAMES=['Oktober','November','Desember'];
+const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbyi_KAaAyrP_a5vR9CXKF1495L7ISraRiTG5K6HALL81vxB0hb_pdrDK5MtUtb3AIza9Q/exec';
 const sheetUrl=name=>`https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?sheet=${encodeURIComponent(name)}&tqx=out:json`;
 const $=s=>document.querySelector(s);const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const present=v=>v!==null&&v!==undefined&&String(v).trim()!==''&&String(v).trim()!=='-';
@@ -57,7 +58,7 @@ function populateWeeks(){const m=$('#monthFilter').value,el=$('#weekFilter'),sel
 function updateStats(){const m=$('#monthFilter').value,list=contents.filter(c=>!m||c.month===m);$('#total').textContent=list.length;$('#completedCount').textContent=list.filter(c=>stage(c)==='complete').length;$('#submittedCount').textContent=list.filter(c=>stage(c)==='submitted').length;$('#revisedCount').textContent=list.filter(c=>stage(c)==='revised').length;$('#monthBadge').textContent='● '+(m?m.toUpperCase():'SEMUA BULAN')}
 function setSourceStatus(type,msg){$('#sourceStatus').className='source-status '+type;$('#sourceMessage').textContent=msg}
 function cellValue(cell){if(!cell)return '';return String(cell.f??cell.v??'').trim()}
-function parseGViz(text, month) {
+function parseGViz(text, month, linkMap = {}) {
   const a = text.indexOf('{');
   const b = text.lastIndexOf('}');
 
@@ -76,12 +77,15 @@ function parseGViz(text, month) {
   let currentWeek = '';
   const out = [];
 
-  for (const row of json.table?.rows || []) {
+  for (const [rowIndex, row] of (json.table?.rows || []).entries()) {
     const cells = row.c || [];
     const v = Array.from(
       { length: 10 },
       (_, i) => cellValue(cells[i])
+    link,
+    linkUrl: linkMap[String(rowIndex + 2)] || ''
     );
+    
 
     // Lewati baris judul kolom jika terbaca sebagai data.
     const header = v.map(x => x.toLowerCase().trim());
@@ -123,12 +127,98 @@ function parseGViz(text, month) {
 
   return out;
 }
-async function syncGoogleSheet(manual){const btn=$('#refreshData');if(manual){btn.disabled=true;btn.textContent='Memuat…'}setSourceStatus('','Mengambil data Google Sheets…');try{const results=await Promise.allSettled(SHEET_NAMES.map(async name=>{const res=await fetch(sheetUrl(name)+'&cache='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error(name+': HTTP '+res.status);return{name,rows:parseGViz(await res.text(),name)}}));const ok=results.filter(x=>x.status==='fulfilled'&&x.value.rows.length>0).map(x=>x.value);const failures=results.filter(x=>x.status==='rejected');if(!ok.length)throw new Error('Tidak ada tab bulanan yang terbaca. Periksa publikasi dan nama tab.');contents=ok.flatMap(x=>x.rows);populateMonths(ok.map(x=>x.name));populateWeeks();updateStats();render();$('#lastSync').textContent='Terakhir diperbarui '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});setSourceStatus('ok','Terhubung: '+ok.map(x=>x.name).join(', ')+' · '+contents.length+' konten'+(failures.length?' · '+failures.length+' tab belum tersedia':''))}catch(err){populateMonths([...new Set(contents.map(c=>c.month))]);populateWeeks();updateStats();render();setSourceStatus('error','Data cadangan ditampilkan. Periksa publikasi Google Sheets.');$('#lastSync').textContent=err.message||'Koneksi belum berhasil';console.warn(err)}finally{if(manual){btn.disabled=false;btn.textContent='↻ Sinkronkan'}}}
+function fetchPlatformLinks() {
+  return new Promise(resolve => {
+    if (!APPS_SCRIPT_URL ||
+        APPS_SCRIPT_URL.includes('MASUKKAN_URL')) {
+      return resolve({});
+    }
+
+    const callback = '__platformLinks_' + Date.now();
+    const script = document.createElement('script');
+
+    const cleanup = () => {
+      delete window[callback];
+      script.remove();
+    };
+
+    const timeout = setTimeout(() => {
+      cleanup();
+      resolve({});
+    }, 15000);
+
+    window[callback] = data => {
+      clearTimeout(timeout);
+      cleanup();
+      resolve(data || {});
+    };
+
+    script.onerror = () => {
+      clearTimeout(timeout);
+      cleanup();
+      resolve({});
+    };
+
+    script.src = APPS_SCRIPT_URL +
+      '?callback=' + callback +
+      '&_=' + Date.now();
+
+    document.head.appendChild(script);
+  });
+}
+async function syncGoogleSheet(manual){const btn=$('#refreshData');if(manual){btn.disabled=true;btn.textContent='Memuat…'}setSourceStatus('','Mengambil data Google Sheets…');try {
+  const linkMap = await fetchPlatformLinks();
+
+  const results = await Promise.allSettled(SHEET_NAMES.map(async name=>{const res=await fetch(sheetUrl(name)+'&cache='+Date.now(),{cache:'no-store'});if(!res.ok)throw new Error(name+': HTTP '+res.status);return {
+  name,
+  rows: parseGViz(
+    await res.text(),
+    name,
+    linkMap[name] || {}
+  )
+};const ok=results.filter(x=>x.status==='fulfilled'&&x.value.rows.length>0).map(x=>x.value);const failures=results.filter(x=>x.status==='rejected');if(!ok.length)throw new Error('Tidak ada tab bulanan yang terbaca. Periksa publikasi dan nama tab.');contents=ok.flatMap(x=>x.rows);populateMonths(ok.map(x=>x.name));populateWeeks();updateStats();render();$('#lastSync').textContent='Terakhir diperbarui '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'});setSourceStatus('ok','Terhubung: '+ok.map(x=>x.name).join(', ')+' · '+contents.length+' konten'+(failures.length?' · '+failures.length+' tab belum tersedia':''))}catch(err){populateMonths([...new Set(contents.map(c=>c.month))]);populateWeeks();updateStats();render();setSourceStatus('error','Data cadangan ditampilkan. Periksa publikasi Google Sheets.');$('#lastSync').textContent=err.message||'Koneksi belum berhasil';console.warn(err)}finally{if(manual){btn.disabled=false;btn.textContent='↻ Sinkronkan'}}}
 function filtered(){const q=$('#search').value.trim().toLowerCase(),m=$('#monthFilter').value,w=$('#weekFilter').value,s=$('#statusFilter').value;return contents.map((c,i)=>({...c,_i:i})).filter(c=>{const hay=[c.month,c.week,c.content,c.created,c.submitted,c.revision,c.uploaded,c.talent,c.caption,c.link].join(' ').toLowerCase();return(!q||hay.includes(q))&&(!m||c.month===m)&&(!w||c.week===w)&&(!s||stage(c)===s)})}
 function status(c){const s=stage(c);return `<span class="status ${s}">${stageLabel[s]}</span>`}
 function progress(c){const s=stage(c);return `<div class="progress-track"><span class="${s}"></span></div>`}
 function render(){const list=filtered();$('#resultCount').textContent=`${list.length} dari ${contents.length} konten`;$('#tableBody').innerHTML=list.length?list.map(c=>`<tr data-index="${c._i}"><td><span class="week">${esc(c.month||'—')} · ${esc(c.week)}</span></td><td><div class="content-name">${esc(c.content)}</div></td><td>${esc(c.created||'—')}</td><td>${esc(c.submitted||'—')}</td><td>${esc(c.revision||'—')}</td><td>${esc(c.uploaded||'—')}</td><td><span class="talent">${esc(c.talent||'Belum diisi')}</span></td><td>${status(c)}</td></tr>`).join(''):'<tr><td colspan="8" class="empty">Tidak ada konten yang cocok dengan filter.</td></tr>';$('#mobileList').innerHTML=list.length?list.map(c=>`<article class="content-card glass" data-index="${c._i}"><div class="card-top"><span class="week">${esc(c.month||'—')} · ${esc(c.week)}</span>${status(c)}</div><h4>${esc(c.content)}</h4><div class="card-meta"><span class="mini">◷ Dibuat: ${esc(c.created||'—')}</span><span class="mini">♙ ${esc(c.talent||'Belum diisi')}</span></div>${progress(c)}</article>`).join(''):'<div class="glass empty">Tidak ada konten yang cocok dengan filter.</div>';document.querySelectorAll('[data-index]').forEach(el=>el.addEventListener('click',()=>openDetail(Number(el.dataset.index))))}
-function openDetail(i){const c=contents[i],s=stage(c);$('#modalWeek').textContent=(c.month+' · '+c.week).toUpperCase();$('#modalTitle').textContent=c.content;$('#modalStatus').innerHTML=status(c);const d=[['Bulan',c.month],['Periode',c.week],['Progress',stageLabel[s]],['Dibuat',c.created],['Disetor',c.submitted],['Revisi',c.revision],['Diupload',c.uploaded],['Talent',c.talent]];$('#detailGrid').innerHTML=d.map(([k,v])=>`<div class="detail"><label>${esc(k)}</label><div>${esc(present(v)?v:'Belum diisi')}</div></div>`).join('');$('#captionText').textContent=c.caption||'Belum ada caption';$('#linkText').textContent=c.link||'Belum ada kanal/link yang dicatat';$('#modalBackdrop').classList.add('open');document.body.style.overflow='hidden'}
+function platformLinksHTML(c) {
+  const url = String(c.linkUrl || '').trim();
+
+  let safeUrl = '';
+
+  try {
+    const parsed = new URL(url);
+
+    if (['http:', 'https:'].includes(parsed.protocol)) {
+      safeUrl = parsed.href;
+    }
+  } catch (e) {}
+
+  return String(c.link || '')
+    .split('\n')
+    .map(line => {
+      const label = line.trim();
+
+      if (!label) return '';
+
+      if (safeUrl) {
+        return `<a href="${esc(safeUrl)}"
+          target="_blank"
+          rel="noopener noreferrer"
+          style="color:#9dffd2;
+          text-decoration:underline;
+          text-underline-offset:3px">
+          ${esc(label)}
+        </a>`;
+      }
+
+      return esc(label);
+    })
+    .join('<br>');
+}
+function openDetail(i){const c=contents[i],s=stage(c);$('#modalWeek').textContent=(c.month+' · '+c.week).toUpperCase();$('#modalTitle').textContent=c.content;$('#modalStatus').innerHTML=status(c);const d=[['Bulan',c.month],['Periode',c.week],['Progress',stageLabel[s]],['Dibuat',c.created],['Disetor',c.submitted],['Revisi',c.revision],['Diupload',c.uploaded],['Talent',c.talent]];$('#detailGrid').innerHTML=d.map(([k,v])=>`<div class="detail"><label>${esc(k)}</label><div>${esc(present(v)?v:'Belum diisi')}</div></div>`).join('');$('#captionText').textContent=c.caption||'Belum ada caption';$('#linkText').innerHTML = c.link
+  ? platformLinksHTML(c)
+  : 'Belum ada platform/link yang dicatat';$('#modalBackdrop').classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(){$('#modalBackdrop').classList.remove('open');document.body.style.overflow=''}
 async function copyText(text,button){try{await navigator.clipboard.writeText(text)}catch(e){const area=document.createElement('textarea');area.value=text;document.body.appendChild(area);area.select();document.execCommand('copy');area.remove()}const old=button.textContent;button.textContent='Tersalin ✓';setTimeout(()=>button.textContent=old,1300)}
 function exportCSV(){const cols=[['Bulan','month'],['Periode','week'],['Konten','content'],['Dibuat','created'],['Disetor','submitted'],['Revisi','revision'],['Diupload','uploaded'],['Talent','talent'],['Progress','stage'],['Caption','caption'],['Link','link']];const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';const csv='\uFEFF'+[cols.map(c=>quote(c[0])).join(','),...filtered().map(c=>cols.map(col=>quote(col[1]==='stage'?stageLabel[stage(c)]:c[col[1]])).join(','))].join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='rekap-konten-ev.csv';a.click();URL.revokeObjectURL(url)}
