@@ -12,7 +12,8 @@ membuat menarik pada tampilan mobile atau hp agar bisa dignakan di multidevice
 
 sementara kui sek, nek semisal berhasil dadi pembelajaranne masuk, nek gagal yoes gpp
 
-# menggunakan dasar HTML, Spreadsheet, Google App Script, Rumus Excel
+# Mempelajari rumus dasar
+menggunakan dasar HTML, Spreadsheet, Google App Script, Rumus Excel
 yuhh kudu sinau sak mono akeh ee
 
 sek sek,, tak kek i quote:
