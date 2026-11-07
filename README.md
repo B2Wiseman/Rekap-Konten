@@ -1,20 +1,21 @@
-# Rekap Konten EV — Glass Dashboard v2
+# Rekap Konten Bagas Wichaksono
+hanya dibuat khusus untuk Bagas Wichaksono saja
 
-Dashboard HTML statis dengan ikon kamera, background animasi, glassmorphism blur, dan tiga progres utama:
-- **Selesai** — hijau, jika kolom Diupload terisi.
-- **Disetor** — kuning, jika belum diupload dan kolom Disetor terisi tanpa tanggal revisi.
-- **Direvisi** — merah, jika belum diupload dan kolom Revisi terisi.
-- **Belum disetor** — abu-abu jika belum ada tanggal setoran, revisi, atau upload.
 
-## Google Sheets
-Spreadsheet ID sudah disetel di `index.html`. Nama tab yang dibaca: `Oktober`, `November`, `Desember`. Urutan kolom 9 pertama pada tiap tab: Periode, Konten, Dibuat, Disetor, Revisi, Diupload, Talent, Caption, Link. Publikasikan setiap tab melalui File → Share → Publish to web. Data yang dipublikasikan dapat diakses publik.
+dasarnya adalah untuk memudahkan rekan kerja lainnya dalam merecord, merekap, dan mencatat konten yang telah saya buat untuk evmart (ben ketok kerjo, nek meneng ae dikiro gak kerjo)
+poin pentingnya adalah pengembangan pembelajaran saya mengenai komputer, shoftware dan development
+membuat website yang bisa menyambung dengan data spreadsheet (membaca data dispreadsheet dan menampilkannya)
+membuat tampilan website yang menarik (aku milih style glass morph ben podo koyok iphone)
+mengupdate data diwebsite sesuai dengan data tambahan yang ada di spreadsheet
+membuat input 2 arah, bisa lewat spreadsheet atau langsung lewat website
+membuat menarik pada tampilan mobile atau hp agar bisa dignakan di multidevice
 
-Untuk menambahkan bulan, ubah `const SHEET_NAMES=['Oktober','November','Desember'];` di `index.html`, lalu tambahkan nama tab yang sama persis.
+sementara kui sek, nek semisal berhasil dadi pembelajaranne masuk, nek gagal yoes gpp
 
-## Upload GitHub Pages
-1. Buat repository GitHub.
-2. Upload `index.html` langsung ke root repository lalu Commit changes.
-3. Settings → Pages → Deploy from a branch → `main` → `/(root)` → Save.
-4. Buka URL yang ditampilkan pada Settings → Pages setelah deploy selesai.
+# menggunakan dasar HTML, Spreadsheet, Google App Script, Rumus Excel
+yuhh kudu sinau sak mono akeh ee
 
-Koneksi perlu diuji dari URL GitHub Pages setelah tab dipublikasikan.
+sek sek,, tak kek i quote:
+"I don't just want things to work. I want to understand how they work, make them better, and build something that makes everyday work easier."
+
+bukan we wok de tok not onli tok de tok
