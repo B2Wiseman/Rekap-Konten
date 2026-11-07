@@ -4,11 +4,11 @@ hanya dibuat khusus untuk Bagas Wichaksono saja
 
 dasarnya adalah untuk memudahkan rekan kerja lainnya dalam merecord, merekap, dan mencatat konten yang telah saya buat untuk evmart (ben ketok kerjo, nek meneng ae dikiro gak kerjo)
 poin pentingnya adalah pengembangan pembelajaran saya mengenai komputer, shoftware dan development
-membuat website yang bisa menyambung dengan data spreadsheet (membaca data dispreadsheet dan menampilkannya)
-membuat tampilan website yang menarik (aku milih style glass morph ben podo koyok iphone)
-mengupdate data diwebsite sesuai dengan data tambahan yang ada di spreadsheet
-membuat input 2 arah, bisa lewat spreadsheet atau langsung lewat website
-membuat menarik pada tampilan mobile atau hp agar bisa dignakan di multidevice
+- membuat website yang bisa menyambung dengan data spreadsheet (membaca data dispreadsheet dan menampilkannya)
+- membuat tampilan website yang menarik (aku milih style glass morph ben podo koyok iphone)
+- mengupdate data diwebsite sesuai dengan data tambahan yang ada di spreadsheet
+- membuat input 2 arah, bisa lewat spreadsheet atau langsung lewat website
+- membuat menarik pada tampilan mobile atau hp agar bisa dignakan di multidevice
 
 sementara kui sek, nek semisal berhasil dadi pembelajaranne masuk, nek gagal yoes gpp
 
